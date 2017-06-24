@@ -7,7 +7,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //Hello AceWD
+        //Hello XylemWD
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
