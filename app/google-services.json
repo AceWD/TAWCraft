@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "771506027894",
+    "firebase_url": "https://tawcraft-47dbe.firebaseio.com",
+    "project_id": "tawcraft-47dbe",
+    "storage_bucket": "tawcraft-47dbe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:771506027894:android:b3fa0eaed0c6eaa3",
+        "android_client_info": {
+          "package_name": "xywd.tawcraft"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "771506027894-eo6bfnt8nl0oil34dm3t0j61o8sq7taj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "xywd.tawcraft",
+            "certificate_hash": "92e102502c7e0e23ce56ad2d87f5c2f81be4d67d"
+          }
+        },
+        {
+          "client_id": "771506027894-jg3ibljc0mnh1uvp1654bmj8b96dg6ac.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVXT3_4iZlCPYj3XqNiOJo3pV2sZeLbqw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "771506027894-jg3ibljc0mnh1uvp1654bmj8b96dg6ac.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
