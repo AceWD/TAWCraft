@@ -17,6 +17,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ExecutionException;
 
 public class ServersActivity extends Activity implements View.OnClickListener{
 
@@ -37,6 +38,12 @@ public class ServersActivity extends Activity implements View.OnClickListener{
     String error = "timed out";
 
     Boolean isRunning = false;
+
+    Timer time;
+    TimerTask minuteTask;
+
+    long delay = 30;
+    int counter = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,13 +69,15 @@ public class ServersActivity extends Activity implements View.OnClickListener{
         System.out.println("Starting Timer!");
 
 
-        Timer time = new Timer();
-        TimerTask minuteTask = new TimerTask() {
+        time = new Timer();
+        minuteTask = new TimerTask() {
             @Override
             public void run() {
 
                 if(isRunning == false)
                 {
+                    System.out.println("The delay is:" + delay);
+                    delay = 30;
                     count.cancel();
                     count.start();
                 }
@@ -79,12 +88,21 @@ public class ServersActivity extends Activity implements View.OnClickListener{
 
         };
 
-        time.schedule(minuteTask, 0l, 1000 * 1 * 30);
+        time.schedule(minuteTask, 0l, 1000 * 1 * 10);
 
 
+    }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
 
-
+        System.out.println("On pause!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        time.cancel();
+        time.purge();
+        time = null;
+        count.cancel();
+        finish();
 
     }
 
@@ -97,11 +115,31 @@ public class ServersActivity extends Activity implements View.OnClickListener{
 
         @Override
         public void onFinish() {
+
             timer.setText("Refresh in progress...");
+            Thread updateThread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+
+
+
+                }
+            });
+/*
+
+            updateThread.start();
+            try {
+                updateThread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+*/
             AsyncTask survivalTask = new SetContentUrl().execute("https://api.minetools.eu/ping/mc.taw.net/25568","1");
             AsyncTask direwolf20Task = new SetContentUrl().execute("https://api.minetools.eu/ping/mc.taw.net/2584","2");
             AsyncTask creativeTask = new SetContentUrl().execute("https://api.minetools.eu/ping/mc.taw.net/25574","3");
+
             isRunning = false;
+
         }
     };
 
@@ -173,6 +211,7 @@ public class ServersActivity extends Activity implements View.OnClickListener{
             {
                 updateText(content[1], direwolf20, direwolf20Text);
                 Toast.makeText(getApplicationContext(), "Refresh Complete!", Toast.LENGTH_SHORT).show();
+                delay = 5;
             }
 
         }
