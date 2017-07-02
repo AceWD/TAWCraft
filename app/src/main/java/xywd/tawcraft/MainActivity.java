@@ -26,8 +26,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
     public void onClick(View view) {
 
         Intent i;
-
         i = new Intent(this,ServersActivity.class);
+        //i.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         startActivity(i);
     }
 }
